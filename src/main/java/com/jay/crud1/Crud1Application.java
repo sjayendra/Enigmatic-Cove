@@ -18,30 +18,12 @@ public class Crud1Application {
 		SpringApplication.run(Crud1Application.class, args);
 	}
 
-	@Autowired
-	private UserService service;
 
-	@GetMapping("/signup")
-	public String showSignUpForm(User user) {
-		return "add-user";
+	@RequestMapping("/")
+	public String index() {
+		return "Greetings from Heroku !";
 	}
 
-	//@RequestMapping("/")
-	//public String index() {
-	//	return "Greetings from Heroku !";
-	//}
-
-	@RestController
-	@RequestMapping("/user")
-	public class UserController {
-		@Autowired
-		private UserRepository userRepository;
-
-		@GetMapping
-		public Iterable<User> getUser() {
-			return this.userRepository.findAll();
-		}
-	}
 
 	@RequestMapping("/jay")
 	public String jay()
@@ -49,10 +31,6 @@ public class Crud1Application {
 		return "test";
 	}
 
-	@RequestMapping("/all")
-	public String showSignUpForm1(User user) {
-		return "users";
-	}
 
 	//public String showAll(Model model) {
 		//model.addAttribute("User", service.findAll());
@@ -61,13 +39,4 @@ public class Crud1Application {
 		//return "users";
 	//}
 
-	@RequestMapping("/users")
-	public String viewHomePage(Model model, @Param("keyword") String keyword) {
-		List<User> listUsers = service.listAll(keyword);
-		//	model.addAttribute("listUsers", listUsers);
-		//	model.addAttribute("keyword", keyword);
-
-		return "user";
-
-		}
-	}
+}
