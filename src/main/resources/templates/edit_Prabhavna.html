@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Submit Prabahavna</title>
+    <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+
+    <script type="text/javascript">
+
+  $(document).ready(function(){
+
+    $("#isCheck").click(function () {
+
+    alert($('input:checkbox[name=checkme]').is(':checked'));
+
+    });
+
+    $("#checkIt").click(function () {
+
+    $('input:checkbox[name=checkme]').attr('checked',true);
+
+    });
+
+    $("#UnCheckIt").click(function () {
+
+    $('input:checkbox[name=checkme]').attr('checked',false);
+
+    });
+
+  });
+
+  function myFunction() {
+  // Get the checkbox
+  var checkBox = document.getElementById("check_Rbta");
+  // Get the output text
+  var text = document.getElementById("txt_Rbta");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.value = "true";
+  } else {
+    text.value = "false";
+  }
+}
+//
+function myFunction1() {
+  var checkBox = document.getElementById("check_Comp");
+  var text = document.getElementById("txt_Comp");
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.value = "true";
+  } else {
+    text.value = "false";
+  }
+}
+//
+
+function myFunction2() {
+  var checkBox = document.getElementById("check_Gatha");
+  var text = document.getElementById("txt_Gatha");
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.value = "true";
+  } else {
+    text.value = "false";
+  }
+}
+//
+function myFunction3() {
+  var checkBox = document.getElementById("check_Conso");
+  var text = document.getElementById("txt_Conso");
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.value = "true";
+  } else {
+    text.value = "false";
+  }
+}
+
+</script>
+</head>
+<body>
+<div align="center">
+    <h1>Prabhavna</h1>
+    <br/>
+    <form action="#" th:action="@{/savePrabhavna}" th:object="${prabhvna}" method="post">
+        <input type="hidden" value="on" name="_active"/>
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>ECN</td>
+                <td><input type="text" th:field="*{ecn}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Center:</td>
+                <td><input type="text" th:field="*{centre}" /></td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td><input type="text" th:field="*{category}" /></td>
+            </tr>
+            <tr>
+                <td>Karyakarta:</td>
+                <td><input type="text" th:field="*{karyakarta}" /></td>
+            </tr>
+            <tr>
+                <td>RBTA</td>
+                <!-- <td> -->
+                <div>
+                        <td><input type="text" name="txt_Rbta" id="txt_Rbta" th:field="*{pra_rbta}">
+                            <input type="checkbox" name="check_Rbta" id="check_Rbta" th:checked="*{pra_rbta}" onclick="myFunction()"  >
+                        </td>
+                    </div>
+                    <!--<input id=obj_isRbta type="checkbox" name="check_Rbta" th:checked="*{pra_rbta}" value="*{pra_rbta}"/> -->
+                 <!--   <input id="object_isInvoiceable" type="checkbox" name="object.isInvoiceable" /> -->
+                </td>
+            </tr>
+            <tr>
+                <td>COMP</td>
+                <td>
+                    <input type="text" name="txt_Comp" id="txt_Comp"  th:field="*{pra_comp}" />
+                    <input type="checkbox" name="chk_Comp" id="check_Comp" th:checked="*{pra_comp}" onclick="myFunction1()"  >
+                </td>
+            </tr>
+            <tr>
+                <td>Gatha</td>
+                <td>
+                    <input type="text" name="txt_Gatha" id="txt_Gatha"  th:field="*{pra_gatha}" />
+                    <input type="checkbox" name="check_Gatha" id="check_Gatha" th:checked="*{pra_gatha}" onclick="myFunction2()"  >
+                </td>
+            </tr>
+            <tr>
+                <td>Consolation</td>
+                <td>
+                    <input type="text" name="txt_Conso" id="txt_Conso"  th:field="*{pra_consolation}" />
+                    <input type="checkbox" name="chk_Conso" id="check_Conso" th:checked="*{pra_consolation}" onclick="myFunction3()"  >
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script th:inline="javascript">
+/*<![CDATA[*/
+
+document.getElementById('obj_isRbta').disabled = false;
+
+/*]]>*/
+</script>
+</body>
+</html>

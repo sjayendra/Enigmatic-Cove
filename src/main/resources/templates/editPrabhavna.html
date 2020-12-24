@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Submit Prabahavna</title>
+</head>
+<body>
+<div align="center">
+    <h1>Prabhavna</h1>
+    <br/>
+    <form action="#" th:action="@{/savePrabhavna}" th:object="${prabhvna}" method="post">
+        <input type="hidden" value="on" name="_active"/>
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>ECN</td>
+                <td><input type="text" th:field="*{ecn}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Center:</td>
+                <td><input type="text" th:field="*{centre}" /></td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td><input type="text" th:field="*{category}" /></td>
+            </tr>
+            <tr>
+                <td>Karyakarta:</td>
+                <td><input type="text" th:field="*{karyakarta}" /></td>
+            </tr>
+            <tr>
+                <td>RBTA</td>
+                <td>
+                    <input type="checkbox" name="rbta" th:checked="*{pra_rbta}"/>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
